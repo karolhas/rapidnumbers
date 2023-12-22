@@ -30,8 +30,9 @@ body {
 }
 
 .btn {
+  text-align: center;
+  margin: 0 8px;
   padding: 8px 16px;
-  margin: 0 5px;
   border: 2px solid rgba(17, 16, 16, 0.8);
   border-radius: 8px;
   background: transparent;
@@ -43,10 +44,25 @@ body {
   background: #c9fc6a;
 }
 
+.btn.active {
+  background-color: #c9fc6a;
+}
+
 .menu {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 .game_timer {

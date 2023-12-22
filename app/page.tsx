@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { generateRandomNumbers } from "./utils";
 import GameResult from "@/components/gameResult";
 import GameBoard from "@/components/gameBoard";
@@ -79,11 +80,10 @@ export default function Page() {
       <div className="container">
         {!gameStarted ? (
           <div className="menu">
-            <button className="btn" onClick={startGame}>
-              START
-            </button>
+            <Link className="btn" href="/gamemode">
+              WYBÓR GRY
+            </Link>
             <button className="btn">RANKING</button>
-            <button className="btn">OSIĄGNIĘCIA</button>
             <button className="btn">USTAWIENIA</button>
           </div>
         ) : gameFinished ? (
@@ -94,7 +94,7 @@ export default function Page() {
           />
         ) : (
           <div>
-            <p className="game_timer">Timer: {formatTime(timer)}</p>
+            <p className="game_timer">Czas: {formatTime(timer)}</p>
             <GameBoard
               numbers={numbers}
               clickedNumbers={clickedNumbers}
