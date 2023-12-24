@@ -82,7 +82,7 @@ export default function GameMode() {
             WRÓĆ
           </Link>
           <Link className="btn" href="/">
-            <button disabled={!boardSize || !difficulty}>DALEJ</button>
+            DALEJ
           </Link>
         </div>
       </div>
