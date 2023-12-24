@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
-import GameCard from "@/components/gameCard";
+import React, { useEffect, useState } from "react";
+import GameCard from "@/app/startgame/components/gameCard";
+import { generateRandomNumbers } from "@/app/utils";
 
 interface GameBoardProps {
   boardSize: number;
@@ -16,26 +17,24 @@ const GameBoard: React.FC<GameBoardProps> = ({
   onCardClick,
   gameFinished,
 }) => {
+  const [shuffledNumbers, setShuffledNumbers] = useState<number[]>([]);
+
+  useEffect(() => {
+    setShuffledNumbers(generateRandomNumbers(boardSize));
+  }, [boardSize]);
+
   const generateGrid = () => {
-    const grid: JSX.Element[] = [];
-    const totalCards = boardSize * boardSize;
-
-    for (let i = 1; i <= totalCards; i++) {
-      grid.push(
-        <GameCard
-          key={i}
-          number={i}
-          onClick={() => onCardClick(i)}
-          disabled={clickedNumbers.includes(i) || gameFinished}
-        />
-      );
-    }
-
-    return grid;
+    return shuffledNumbers.map((number, index) => (
+      <GameCard
+        key={index}
+        number={number}
+        onClick={() => onCardClick(number)}
+        disabled={clickedNumbers.includes(number) || gameFinished}
+      />
+    ));
   };
 
   const calculateGridTemplateColumns = () => {
-    // Ustawiamy szerokość kolumn planszy w zależności od wybranej wielkości planszy
     return `repeat(${boardSize}, 1fr)`;
   };
 
