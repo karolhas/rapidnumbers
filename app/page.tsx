@@ -9,8 +9,12 @@ export default function Page() {
         <Link className="btn" href="/gamemode">
           WYBÓR GRY
         </Link>
-        <button className="btn">RANKING</button>
-        <button className="btn">USTAWIENIA</button>
+        <Link className="btn" href="/">
+          RANKING
+        </Link>
+        <Link className="btn" href="/">
+          USTAWIENIA
+        </Link>
       </div>
     </div>
   );
