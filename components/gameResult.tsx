@@ -1,18 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 
 interface GameResultProps {
   timer: number;
   onRestart: () => void;
-  onNavigateToMenu: () => void;
 }
 
-const GameResult: React.FC<GameResultProps> = ({
-  timer,
-  onRestart,
-  onNavigateToMenu,
-}) => {
+const GameResult: React.FC<GameResultProps> = ({ timer, onRestart }) => {
   const formatTime = (milliseconds: number) => {
     const minutes = Math.floor((milliseconds % 3600000) / 60000);
     const seconds = Math.floor((milliseconds % 60000) / 1000);
@@ -34,9 +30,9 @@ const GameResult: React.FC<GameResultProps> = ({
         <button className="btn" onClick={onRestart}>
           Powtórz
         </button>
-        <button className="btn" onClick={onNavigateToMenu}>
+        <Link className="btn" href="/">
           Wyjdź do menu
-        </button>
+        </Link>
       </div>
     </div>
   );
