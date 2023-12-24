@@ -9,14 +9,21 @@ interface GameCardProps {
 }
 
 const GameCard: React.FC<GameCardProps> = ({ number, onClick, disabled }) => {
+  const paletteColors = [
+    "#DCDCDC",
+    "#1FFFB5",
+    "#FF66FF",
+    "#FF9933",
+    "#3333FF",
+    "#E4FF2B",
+  ];
   const [bgColor, setBgColor] = useState<string>("#fff");
 
   const handleMouseEnter = () => {
     if (!disabled) {
-      const randomColor = `#${Math.floor(Math.random() * 16777215).toString(
-        16
-      )}`;
-      setBgColor(randomColor);
+      const randomIndex = Math.floor(Math.random() * paletteColors.length);
+      const selectedColor = paletteColors[randomIndex];
+      setBgColor(selectedColor);
     }
   };
 

@@ -18,7 +18,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
   gameFinished,
 }) => {
   const [shuffledNumbers, setShuffledNumbers] = useState<number[]>([]);
-
+  
   useEffect(() => {
     setShuffledNumbers(generateRandomNumbers(boardSize));
   }, [boardSize]);
