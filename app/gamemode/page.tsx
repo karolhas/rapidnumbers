@@ -1,12 +1,9 @@
-// gameMode.tsx
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function GameMode() {
-  const router = useRouter();
   const [boardSize, setBoardSize] = useState<number | null>(null);
   const [difficulty, setDifficulty] = useState<string | null>(null);
   const [selectedBoardSize, setSelectedBoardSize] = useState<number | null>(
@@ -28,7 +25,8 @@ export default function GameMode() {
 
   const handleStartGame = () => {
     if (boardSize && difficulty) {
-      router.push(`/game?boardSize=${boardSize}&difficulty=${difficulty}`);
+      const url = `/start?boardSize=${boardSize}&difficulty=${difficulty}`;
+      window.location.href = url;
     }
   };
 
@@ -81,9 +79,9 @@ export default function GameMode() {
           <Link className="btn" href="/">
             WRÓĆ
           </Link>
-          <Link className="btn" href="/">
+          <button className="btn" onClick={handleStartGame}>
             DALEJ
-          </Link>
+          </button>
         </div>
       </div>
     </div>

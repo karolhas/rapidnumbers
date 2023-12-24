@@ -74,13 +74,6 @@ h2 {
   transform: translate(-50%, -50%);
 }
 
-.game_board {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 3px;
-}
-
 .ingame_btn {
   padding: 20px;
   font-size: 20px;
