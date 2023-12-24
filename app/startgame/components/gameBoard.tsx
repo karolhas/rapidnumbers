@@ -18,18 +18,41 @@ const GameBoard: React.FC<GameBoardProps> = ({
   gameFinished,
 }) => {
   const [shuffledNumbers, setShuffledNumbers] = useState<number[]>([]);
-  
+
   useEffect(() => {
     setShuffledNumbers(generateRandomNumbers(boardSize));
   }, [boardSize]);
 
+  const calculateCardSize = () => {
+    let width = "75px";
+    let height = "75px";
+
+    if (window.innerWidth < 600) {
+      width = "70px";
+      height = "70px";
+    }
+
+    if (boardSize === 7) {
+      width = window.innerWidth < 600 ? "55px" : "70px";
+      height = window.innerWidth < 600 ? "55px" : "70px";
+    } else if (boardSize === 10) {
+      width = window.innerWidth < 600 ? "52px" : "57px";
+      height = window.innerWidth < 600 ? "52px" : "57px";
+    }
+
+    return { width, height };
+  };
+
   const generateGrid = () => {
+    const cardSize = calculateCardSize();
+
     return shuffledNumbers.map((number, index) => (
       <GameCard
         key={index}
         number={number}
         onClick={() => onCardClick(number)}
         disabled={clickedNumbers.includes(number) || gameFinished}
+        style={cardSize}
       />
     ));
   };
@@ -43,6 +66,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
       className="game_board"
       style={{
         display: "grid",
+        gap: "3px",
         gridTemplateColumns: calculateGridTemplateColumns(),
       }}
     >

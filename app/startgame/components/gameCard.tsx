@@ -6,9 +6,15 @@ interface GameCardProps {
   number: number;
   onClick: () => void;
   disabled: boolean;
+  style?: React.CSSProperties;
 }
 
-const GameCard: React.FC<GameCardProps> = ({ number, onClick, disabled }) => {
+const GameCard: React.FC<GameCardProps> = ({
+  number,
+  onClick,
+  disabled,
+  style,
+}) => {
   const paletteColors = [
     "#DCDCDC",
     "#1FFFB5",
@@ -33,10 +39,10 @@ const GameCard: React.FC<GameCardProps> = ({ number, onClick, disabled }) => {
 
   return (
     <button
-      className="ingame_btn"
+      className="game_card"
       onClick={onClick}
       disabled={disabled}
-      style={{ opacity: disabled ? 0.5 : 1, background: bgColor }}
+      style={{ ...style, opacity: disabled ? 0.5 : 1, background: bgColor }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
