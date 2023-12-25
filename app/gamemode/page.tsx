@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import BoardSizeSelector from "@/app/gamemode/components/boardSizeSelector";
 import DifficultySelector from "@/app/gamemode/components/difficultySelector";
@@ -12,20 +11,30 @@ export default function GameMode() {
   const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(
     null
   );
+  const [error, setError] = useState<string | null>(null);
 
   const handleBoardSizeChange = (size: number) => {
     setSelectedBoardSize(size);
+    setError(null);
   };
 
   const handleDifficultyChange = (level: string) => {
     setSelectedDifficulty(level);
+    setError(null);
   };
 
   const handleStartGame = () => {
-    if (selectedBoardSize && selectedDifficulty) {
+    if (!selectedBoardSize || !selectedDifficulty) {
+      setError("Wybierz rozmiar planszy oraz poziom trudności");
+    } else {
+      setError(null); // Reset error when starting the game
       const url = `/startgame?boardSize=${selectedBoardSize}&difficulty=${selectedDifficulty}`;
       window.location.href = url;
     }
+  };
+
+  const handleBackToMenu = (e: { preventDefault: () => any }) => {
+    e.preventDefault(), (window.location.href = "/");
   };
 
   return (
@@ -39,10 +48,11 @@ export default function GameMode() {
           selectedDifficulty={selectedDifficulty}
           onDifficultyChange={handleDifficultyChange}
         />
-        <div className="text-center mt-20">
-          <Link className="btn" href="/">
+        {error && <div className="error">{error}</div>}
+        <div className="text-center mt-28">
+          <button className="btn" onClick={handleBackToMenu}>
             WRÓĆ
-          </Link>
+          </button>
           <button className="btn" onClick={handleStartGame}>
             DALEJ
           </button>

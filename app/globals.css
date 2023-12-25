@@ -72,6 +72,18 @@ body {
   background: #c9fc6a;
 }
 
+.error {
+  width: 70%;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .restart_btn {
   position: fixed;
   top: 5vh;
