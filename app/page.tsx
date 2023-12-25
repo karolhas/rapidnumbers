@@ -12,7 +12,7 @@ export default function Page() {
         <Link className="btn" href="/">
           RANKING
         </Link>
-        <Link className="btn" href="/">
+        <Link className="btn" href="/settings">
           USTAWIENIA
         </Link>
       </div>

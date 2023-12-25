@@ -60,12 +60,12 @@ body {
   bottom: 5vh;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 6px 14px;
   border: 2px solid rgba(17, 16, 16, 0.8);
   border-radius: 8px;
-  padding: 4px 12px;
   background: transparent;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .menu_btn:hover {
@@ -148,17 +148,18 @@ h2 {
 }
 
 .confirm-modal {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
-  width: 100vw;
-  height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .modal-content {
@@ -177,6 +178,18 @@ h2 {
 }
 
 .modal-content button:hover {
+  background: #c9fc6a;
+}
+
+/* SETTINGS */
+.settings_btn {
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 20px;
+}
+
+.settings_btn:hover {
   background: #c9fc6a;
 }
 

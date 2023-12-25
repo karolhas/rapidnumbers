@@ -33,8 +33,8 @@ const GameBoard: React.FC<GameBoardProps> = ({
     }
 
     if (boardSize === 7) {
-      width = window.innerWidth < 600 ? "55px" : "70px";
-      height = window.innerWidth < 600 ? "55px" : "70px";
+      width = window.innerWidth < 600 ? "53px" : "70px";
+      height = window.innerWidth < 600 ? "53px" : "70px";
     } else if (boardSize === 10) {
       width = window.innerWidth < 600 ? "52px" : "57px";
       height = window.innerWidth < 600 ? "52px" : "57px";

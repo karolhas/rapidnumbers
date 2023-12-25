@@ -23,7 +23,7 @@ const GameCard: React.FC<GameCardProps> = ({
     "#3333FF",
     "#E4FF2B",
   ];
-  const [bgColor, setBgColor] = useState<string>("#fff");
+  const [bgColor, setBgColor] = useState<string>("#F7f7f7");
 
   const handleMouseEnter = () => {
     if (!disabled) {
@@ -34,7 +34,7 @@ const GameCard: React.FC<GameCardProps> = ({
   };
 
   const handleMouseLeave = () => {
-    setBgColor("#fff");
+    setBgColor("#F7f7f7");
   };
 
   return (
@@ -42,7 +42,7 @@ const GameCard: React.FC<GameCardProps> = ({
       className="game_card"
       onClick={onClick}
       disabled={disabled}
-      style={{ ...style, opacity: disabled ? 0.5 : 1, background: bgColor }}
+      style={{ ...style, opacity: disabled ? 0.2 : 1, background: bgColor }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

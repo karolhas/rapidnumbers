@@ -27,7 +27,7 @@ export default function GameMode() {
     if (!selectedBoardSize || !selectedDifficulty) {
       setError("Wybierz rozmiar planszy oraz poziom trudności");
     } else {
-      setError(null); // Reset error when starting the game
+      setError(null);
       const url = `/startgame?boardSize=${selectedBoardSize}&difficulty=${selectedDifficulty}`;
       window.location.href = url;
     }
