@@ -193,6 +193,26 @@ h2 {
   background: #c9fc6a;
 }
 
+.settings_box {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px 0px rgba(176, 176, 187, 1);
+}
+
+.settings_language,
+.settings_theme {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px 0px rgba(176, 176, 187, 1);
+}
+
 /* RESPONSIVE */
 @media screen and (max-width: 600px) {
   .container {
