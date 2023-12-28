@@ -5,41 +5,51 @@ import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 // import { Toaster } from "react-hot-toast";
 
 const Settings: React.FC = () => {
+  const isClient = typeof window !== "undefined";
+  const [areSettingsChanged, setAreSettingsChanged] = useState<boolean>(false);
+
   const [theme, setTheme] = useState<string>(() => {
-    const storedTheme = localStorage.getItem("theme");
+    const storedTheme = isClient ? localStorage.getItem("theme") : null;
     return storedTheme ? storedTheme : "light";
   });
   const [language, setLanguage] = useState<string>(() => {
-    const storedLanguage = localStorage.getItem("language");
+    const storedLanguage = isClient ? localStorage.getItem("language") : null;
     return storedLanguage ? storedLanguage : "pl";
   });
   const [musicVolume, setMusicVolume] = useState<number>(() => {
-    const storedMusicVolume = localStorage.getItem("musicVolume");
+    const storedMusicVolume = isClient
+      ? localStorage.getItem("musicVolume")
+      : null;
     return storedMusicVolume ? parseInt(storedMusicVolume, 10) : 100;
   });
   const [isMusicMuted, setIsMusicMuted] = useState<boolean>(() => {
-    const storedIsMusicMuted = localStorage.getItem("isMusicMuted");
+    const storedIsMusicMuted = isClient
+      ? localStorage.getItem("isMusicMuted")
+      : null;
     return storedIsMusicMuted ? JSON.parse(storedIsMusicMuted) : false;
   });
   const [soundVolume, setSoundVolume] = useState<number>(() => {
-    const storedSoundVolume = localStorage.getItem("soundVolume");
+    const storedSoundVolume = isClient
+      ? localStorage.getItem("soundVolume")
+      : null;
     return storedSoundVolume ? parseInt(storedSoundVolume, 10) : 100;
   });
   const [isSoundMuted, setIsSoundMuted] = useState<boolean>(() => {
-    const storedIsSoundMuted = localStorage.getItem("isSoundMuted");
+    const storedIsSoundMuted = isClient
+      ? localStorage.getItem("isSoundMuted")
+      : null;
     return storedIsSoundMuted ? JSON.parse(storedIsSoundMuted) : false;
   });
 
-  const [areSettingsChanged, setAreSettingsChanged] = useState<boolean>(false);
-
   const saveSettings = () => {
-    localStorage.setItem("theme", theme);
-    localStorage.setItem("language", language);
-    localStorage.setItem("musicVolume", musicVolume.toString());
-    localStorage.setItem("isMusicMuted", JSON.stringify(isMusicMuted));
-    localStorage.setItem("soundVolume", soundVolume.toString());
-    localStorage.setItem("isSoundMuted", JSON.stringify(isSoundMuted));
-
+    if (isClient) {
+      localStorage.setItem("theme", theme);
+      localStorage.setItem("language", language);
+      localStorage.setItem("musicVolume", musicVolume.toString());
+      localStorage.setItem("isMusicMuted", JSON.stringify(isMusicMuted));
+      localStorage.setItem("soundVolume", soundVolume.toString());
+      localStorage.setItem("isSoundMuted", JSON.stringify(isSoundMuted));
+    }
     setAreSettingsChanged(false);
   };
 
