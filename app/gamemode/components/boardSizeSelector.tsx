@@ -1,16 +1,18 @@
 "use client";
 
 interface BoardSizeSelectorProps {
+  title: string;
   selectedBoardSize: number | null;
   onBoardSizeChange: (size: number) => void;
 }
 
 const BoardSizeSelector: React.FC<BoardSizeSelectorProps> = ({
+  title,
   selectedBoardSize,
   onBoardSizeChange,
 }) => (
   <div className="text-center">
-    <h2 className="mb-4">Wybór planszy</h2>
+    <h2 className="mb-4">{title}</h2>
     <div>
       <button
         className={`btn ${selectedBoardSize === 5 ? "active" : ""}`}

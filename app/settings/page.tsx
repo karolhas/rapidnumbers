@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { Toaster, toast } from "react-hot-toast";
+import VolumeSettings from "./components/volumeSettings";
+import LanguageSettings from "./components/languageSettings";
+import ThemeSettings from "./components/themeSettings";
+
+import PlFlag from "@/public/pl-flag.png";
+import EnFlag from "@/public/en-flag.png";
 
 const Settings: React.FC = () => {
   const isClient = typeof window !== "undefined";
@@ -89,45 +94,29 @@ const Settings: React.FC = () => {
       <div className="menu">
         <Toaster position="top-center" />
         <h1 className="text-center">USTAWIENIA</h1>
-
         <div>
-          <div className="settings_box">
-            <h2 className="mr-12">Muzyka</h2>
-            <FaVolumeMute size="28" />
-            <input
-              type="range"
-              value={musicVolume}
-              onChange={handleMusicVolumeChange}
-              className="mx-4"
-            />
-            <FaVolumeUp size="28" />
-          </div>
-
-          <div className="settings_box">
-            <h2 className="mr-12">DŹWIĘKI</h2>
-            <FaVolumeMute size="28" />
-            <input
-              type="range"
-              value={soundVolume}
-              onChange={handleSoundVolumeChange}
-              className="mx-4"
-            />
-            <FaVolumeUp size="28" />
-          </div>
-
-          <div className="settings_language">
-            <h2 className="mr-12">JĘZYK</h2>
-            <button className="" onClick={handleLanguageChange}>
-              {language === "pl" ? "POLSKI" : "ANGIELSKI"}
-            </button>
-          </div>
-
-          <div className="settings_theme">
-            <h2 className="mr-12">MOTYW</h2>
-            <button className="" onClick={handleThemeChange}>
-              {theme === "light" ? "JASNY" : "CIEMNY"}
-            </button>
-          </div>
+          <VolumeSettings
+            title="MUZYKA"
+            volume={musicVolume}
+            onVolumeChange={handleMusicVolumeChange}
+          />
+          <VolumeSettings
+            title="DŹWIĘKI"
+            volume={soundVolume}
+            onVolumeChange={handleSoundVolumeChange}
+          />
+          <LanguageSettings
+            title="JĘZYK"
+            label={language === "pl" ? "pl" : "en"}
+            flagSrcPl={PlFlag}
+            flagSrcEn={EnFlag}
+            onClick={handleLanguageChange}
+          />
+          <ThemeSettings
+            title="MOTYW"
+            label={theme === "light" ? "JASNY" : "CIEMNY"}
+            onClick={handleThemeChange}
+          />
         </div>
 
         <div className="text-center mt-20">

@@ -1,27 +1,37 @@
 "use client";
 
+import { IoSkull, IoHappy } from "react-icons/io5";
+
 interface DifficultySelectorProps {
+  title: string;
   selectedDifficulty: string | null;
   onDifficultyChange: (level: string) => void;
 }
 
 const DifficultySelector: React.FC<DifficultySelectorProps> = ({
+  title,
   selectedDifficulty,
   onDifficultyChange,
 }) => (
   <div className="text-center">
-    <h2 className="mb-4">Wybór poziomu trudności</h2>
+    <h2 className="mb-4">{title}</h2>
     <button
-      className={`btn ${selectedDifficulty === "normal" ? "active" : ""}`}
+      className={`btn inline-flex items-center justify-center ${
+        selectedDifficulty === "normal" ? "active" : ""
+      }`}
       onClick={() => onDifficultyChange("normal")}
     >
-      Normalny
+      <IoHappy size="20" className="mr-2 text-slate-800" />
+      NORMAL
     </button>
     <button
-      className={`btn ${selectedDifficulty === "hardcore" ? "active" : ""}`}
+      className={`btn inline-flex items-center justify-center ${
+        selectedDifficulty === "hardcore" ? "active" : ""
+      }`}
       onClick={() => onDifficultyChange("hardcore")}
     >
-      Hardcore
+      <IoSkull size="20" className="mr-2 text-slate-800" />
+      HARDCORE
     </button>
   </div>
 );

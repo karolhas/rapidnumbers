@@ -41,10 +41,12 @@ export default function GameMode() {
     <div className="container">
       <div className="menu">
         <BoardSizeSelector
+          title="WYBÓR PLANSZY"
           selectedBoardSize={selectedBoardSize}
           onBoardSizeChange={handleBoardSizeChange}
         />
         <DifficultySelector
+          title="WYBIERZ POZIOM TRUDNOŚCI"
           selectedDifficulty={selectedDifficulty}
           onDifficultyChange={handleDifficultyChange}
         />
