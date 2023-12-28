@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
-// import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 const Settings: React.FC = () => {
   const isClient = typeof window !== "undefined";
@@ -51,6 +51,8 @@ const Settings: React.FC = () => {
       localStorage.setItem("isSoundMuted", JSON.stringify(isSoundMuted));
     }
     setAreSettingsChanged(false);
+
+    toast.success("Zapisano ustawienia!");
   };
 
   const handleThemeChange = () => {
@@ -85,6 +87,7 @@ const Settings: React.FC = () => {
   return (
     <div className="container">
       <div className="menu">
+        <Toaster position="top-center" />
         <h1 className="text-center">USTAWIENIA</h1>
 
         <div>
