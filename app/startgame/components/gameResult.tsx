@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/Button";
 import Link from "next/link";
 import React from "react";
 
@@ -27,12 +28,12 @@ const GameResult: React.FC<GameResultProps> = ({ timer, onRestart }) => {
         Twój wynik to: <b>{formatTime(timer)}s</b>
       </p>
       <div className="game_results">
-        <button className="btn" onClick={onRestart}>
+        <Button variant="outline" size="sm" onClick={onRestart}>
           Powtórz
-        </button>
-        <Link className="btn" href="/">
+        </Button>
+        <Button variant="outline" size="sm" href="/">
           Wyjdź do menu
-        </Link>
+        </Button>
       </div>
     </div>
   );
