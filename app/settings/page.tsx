@@ -8,6 +8,7 @@ import ThemeSettings from "./components/themeSettings";
 
 import PlFlag from "@/public/pl-flag.png";
 import EnFlag from "@/public/en-flag.png";
+import { Button } from "@/components/Button";
 
 const Settings: React.FC = () => {
   const isClient = typeof window !== "undefined";
@@ -120,13 +121,18 @@ const Settings: React.FC = () => {
         </div>
 
         <div className="text-center mt-20">
-          <button className="btn" onClick={handleBackToMenu}>
+          <Button variant="outline" size="default" onClick={handleBackToMenu}>
             WRÓĆ
-          </button>
+          </Button>
           {areSettingsChanged && (
-            <button className="settings_btn" onClick={saveSettings}>
+            <Button
+              variant="outline"
+              size="default"
+              className="settings_btn"
+              onClick={saveSettings}
+            >
               ZAPISZ
-            </button>
+            </Button>
           )}
         </div>
       </div>

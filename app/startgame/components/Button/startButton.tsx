@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/components/Button";
+
 interface StartButtonProps {
   onStartGame: () => void;
 }
@@ -10,13 +12,18 @@ const StartButton: React.FC<StartButtonProps> = ({ onStartGame }) => {
   };
 
   return (
-    <div>
-      <button className="btn" onClick={onStartGame}>
+    <div className="flex flex-col justify-center items-center">
+      <Button variant="outline" size="default" onClick={onStartGame}>
         START
-      </button>
-      <button className="menu_btn" onClick={handleBackToMenu}>
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleBackToMenu}
+        className="absolute bottom-20"
+      >
         MENU
-      </button>
+      </Button>
     </div>
   );
 };

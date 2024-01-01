@@ -9,7 +9,7 @@ interface FlagButtonProps {
 }
 
 const FlagButton: React.FC<FlagButtonProps> = ({ label, flagSrc, onClick }) => (
-  <button onClick={onClick} className="flag-button">
+  <button onClick={onClick}>
     <Image width={36} height={36} src={flagSrc} alt={label} />
   </button>
 );

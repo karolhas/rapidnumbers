@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import GameCard from "@/app/startgame/components/gameCard";
-import { generateRandomNumbers } from "@/app/utils";
+import { generateRandomNumbers } from "@/app/startgame/components/generateRandomNumbers";
 
 interface GameBoardProps {
   boardSize: number;

@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { generateRandomNumbers } from "@/app/utils";
+import { generateRandomNumbers } from "@/app/startgame/components/generateRandomNumbers";
 
 import GameResult from "@/app/startgame/components/gameResult";
 import GameBoard from "@/app/startgame/components/gameBoard";

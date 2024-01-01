@@ -3,6 +3,7 @@
 import { useState } from "react";
 import BoardSizeSelector from "@/app/gamemode/components/boardSizeSelector";
 import DifficultySelector from "@/app/gamemode/components/difficultySelector";
+import { Button } from "@/components/Button";
 
 export default function GameMode() {
   const [selectedBoardSize, setSelectedBoardSize] = useState<number | null>(
@@ -52,12 +53,12 @@ export default function GameMode() {
         />
         {error && <div className="error">{error}</div>}
         <div className="text-center mt-28">
-          <button className="btn" onClick={handleBackToMenu}>
+          <Button variant="outline" size="default" onClick={handleBackToMenu}>
             WRÓĆ
-          </button>
-          <button className="btn" onClick={handleStartGame}>
+          </Button>
+          <Button variant="outline" size="default" onClick={handleStartGame}>
             DALEJ
-          </button>
+          </Button>
         </div>
       </div>
     </div>
