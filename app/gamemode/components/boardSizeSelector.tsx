@@ -14,28 +14,25 @@ const BoardSizeSelector: React.FC<BoardSizeSelectorProps> = ({
   onBoardSizeChange,
 }) => (
   <div className="text-center">
-    <h2 className="mb-4">{title}</h2>
+    <h2 className="mb-4 text-xl font-medium uppercase">{title}</h2>
     <div>
       <Button
-        variant="outline"
+        variant={`${selectedBoardSize === 5 ? "active" : "outline"}`}
         size="default"
-        className={`btn ${selectedBoardSize === 5 ? "active" : ""}`}
         onClick={() => onBoardSizeChange(5)}
       >
         5x5
       </Button>
       <Button
-        variant="outline"
+        variant={`${selectedBoardSize === 7 ? "active" : "outline"}`}
         size="default"
-        className={`btn ${selectedBoardSize === 7 ? "active" : ""}`}
         onClick={() => onBoardSizeChange(7)}
       >
         7x7
       </Button>
       <Button
-        variant="outline"
+        variant={`${selectedBoardSize === 10 ? "active" : "outline"}`}
         size="default"
-        className={`btn ${selectedBoardSize === 10 ? "active" : ""}`}
         onClick={() => onBoardSizeChange(10)}
       >
         10x10

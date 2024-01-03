@@ -94,7 +94,7 @@ export default function StartGamePage() {
       ) : gameFinished ? (
         <GameResult timer={timer} onRestart={restartGame} />
       ) : (
-        <div>
+        <>
           <TimerDisplay milliseconds={timer} />
           <RestartButton onRestart={restartGame} />
           <GameBoard
@@ -103,7 +103,7 @@ export default function StartGamePage() {
             onCardClick={handleCardClick}
             gameFinished={gameFinished}
           />
-        </div>
+        </>
       )}
     </div>
   );

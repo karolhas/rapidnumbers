@@ -16,7 +16,11 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({ milliseconds }) => {
     )}:${String(ms).padStart(2, "0")}`;
   };
 
-  return <p className="game_timer">Czas: {formatTime(milliseconds)}</p>;
+  return (
+    <p className="absolute text-xl top-[2vh] left-[50%] translate-x-[-50%]">
+      Czas: {formatTime(milliseconds)}
+    </p>
+  );
 };
 
 export default TimerDisplay;

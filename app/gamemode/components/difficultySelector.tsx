@@ -15,27 +15,21 @@ const DifficultySelector: React.FC<DifficultySelectorProps> = ({
   onDifficultyChange,
 }) => (
   <div className="text-center">
-    <h2 className="mb-4">{title}</h2>
+    <h2 className="mb-4 text-xl font-medium uppercase">{title}</h2>
     <Button
-      variant="outline"
+      variant={selectedDifficulty === "normal" ? "active" : "outline"}
       size="default"
-      className={`btn inline-flex items-center justify-center ${
-        selectedDifficulty === "normal" ? "active" : ""
-      }`}
       onClick={() => onDifficultyChange("normal")}
     >
-      <IoHappy size="20" className="mr-2 text-slate-800" />
+      <IoHappy size="20" className="mr-2 text-slate-800 dark:text-slate-300" />
       NORMAL
     </Button>
     <Button
-      variant="outline"
+      variant={selectedDifficulty === "hardcore" ? "active" : "outline"}
       size="default"
-      className={`btn inline-flex items-center justify-center ${
-        selectedDifficulty === "hardcore" ? "active" : ""
-      }`}
       onClick={() => onDifficultyChange("hardcore")}
     >
-      <IoSkull size="20" className="mr-2 text-slate-800" />
+      <IoSkull size="20" className="mr-2 text-slate-800 dark:text-slate-300" />
       HARDCORE
     </Button>
   </div>

@@ -13,8 +13,8 @@ const VolumeSettings: React.FC<VolumeSettingsProps> = ({
   volume,
   onVolumeChange,
 }) => (
-  <div className="settings_box">
-    <h2 className="mr-12">{title}</h2>
+  <div className="p-4 mb-4 flex justify-between items-center rounded-xl shadow-insetShadow">
+    <h2 className="mr-12 text-xl font-medium uppercase">{title}</h2>
     <div className="flex">
       <FaVolumeMute size="24" />
       <input

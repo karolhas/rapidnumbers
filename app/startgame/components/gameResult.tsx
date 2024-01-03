@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/Button";
-import Link from "next/link";
+import Container from "@/components/Container";
 import React from "react";
 
 interface GameResultProps {
@@ -22,20 +22,22 @@ const GameResult: React.FC<GameResultProps> = ({ timer, onRestart }) => {
   };
 
   return (
-    <div>
-      <p className="game_over">Gra zakończona!</p>
-      <p className="game_over">
-        Twój wynik to: <b>{formatTime(timer)}s</b>
-      </p>
-      <div className="game_results">
-        <Button variant="outline" size="sm" onClick={onRestart}>
-          Powtórz
-        </Button>
-        <Button variant="outline" size="sm" href="/">
-          Wyjdź do menu
-        </Button>
+    <Container>
+      <div className="flex flex-col gap-3">
+        <p className="text-2xl text-center font-medium">GRA ZAKOŃCZONA!</p>
+        <p className="text-2xl text-center">
+          Twój wynik to: <b>{formatTime(timer)}s</b>
+        </p>
+        <div className="flex flex-row justify-center items-center mt-10">
+          <Button variant="outline" size="sm" onClick={onRestart}>
+            POWTÓRZ
+          </Button>
+          <Button variant="outline" size="sm" href="/">
+            WYJDŹ DO MENU
+          </Button>
+        </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

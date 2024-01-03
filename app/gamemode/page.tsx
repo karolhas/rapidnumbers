@@ -4,6 +4,7 @@ import { useState } from "react";
 import BoardSizeSelector from "@/app/gamemode/components/boardSizeSelector";
 import DifficultySelector from "@/app/gamemode/components/difficultySelector";
 import { Button } from "@/components/Button";
+import Container from "@/components/Container";
 
 export default function GameMode() {
   const [selectedBoardSize, setSelectedBoardSize] = useState<number | null>(
@@ -39,8 +40,8 @@ export default function GameMode() {
   };
 
   return (
-    <div className="container">
-      <div className="menu">
+    <Container>
+      <div className="flex flex-col gap-10">
         <BoardSizeSelector
           title="WYBÓR PLANSZY"
           selectedBoardSize={selectedBoardSize}
@@ -51,7 +52,11 @@ export default function GameMode() {
           selectedDifficulty={selectedDifficulty}
           onDifficultyChange={handleDifficultyChange}
         />
-        {error && <div className="error">{error}</div>}
+        {error && (
+          <div className="w-[70%] absolute top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-red-600 font-medium uppercase text-center">
+            {error}
+          </div>
+        )}
         <div className="text-center mt-28">
           <Button variant="outline" size="default" onClick={handleBackToMenu}>
             WRÓĆ
@@ -61,6 +66,6 @@ export default function GameMode() {
           </Button>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }

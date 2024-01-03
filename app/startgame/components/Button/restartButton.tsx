@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import ConfirmModal from "@/app/startgame/components/confirmModal"; // Zastąp ścieżką do ConfirmModal
+import ConfirmModal from "@/app/startgame/components/confirmModal";
+import { Button } from "@/components/Button";
 
 interface RestartButtonProps {
   onRestart: () => void;
@@ -25,9 +26,14 @@ const RestartButton: React.FC<RestartButtonProps> = ({ onRestart }) => {
 
   return (
     <div>
-      <button className="restart_btn" onClick={handleRestartClick}>
+      <Button
+        variant="outline"
+        size="sm"
+        className="absolute top-[7vh] right-[25%] translate-x-[-50%] text-base cursor-pointer"
+        onClick={handleRestartClick}
+      >
         RESTART
-      </button>
+      </Button>
 
       <ConfirmModal
         isOpen={isModalOpen}

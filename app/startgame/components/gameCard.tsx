@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTheme } from "next-themes";
 
 interface GameCardProps {
   number: number;
@@ -15,6 +16,8 @@ const GameCard: React.FC<GameCardProps> = ({
   disabled,
   style,
 }) => {
+  const { theme } = useTheme();
+
   const paletteColors = [
     "#DCDCDC",
     "#1FFFB5",
@@ -23,7 +26,9 @@ const GameCard: React.FC<GameCardProps> = ({
     "#3333FF",
     "#E4FF2B",
   ];
-  const [bgColor, setBgColor] = useState<string>("#F7f7f7");
+  const [bgColor, setBgColor] = useState<string>(
+    theme === "dark" ? "#555" : "#f7f7f7"
+  );
 
   const handleMouseEnter = () => {
     if (!disabled) {
@@ -34,12 +39,12 @@ const GameCard: React.FC<GameCardProps> = ({
   };
 
   const handleMouseLeave = () => {
-    setBgColor("#F7f7f7");
+    setBgColor(theme === "dark" ? "#555" : "#f7f7f7");
   };
 
   return (
     <button
-      className="game_card"
+      className="text-[18px] transition-all duration-100 border-2 border-[#757575] pointer dark:text-slate-100 dark:border-[#808080]"
       onClick={onClick}
       disabled={disabled}
       style={{ ...style, opacity: disabled ? 0.2 : 1, background: bgColor }}

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "./themeProvider";
 
 export const metadata: Metadata = {
   title: "Rapid Numbers",
@@ -22,8 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <>
+      <html lang="pl">
+        <body className="h-[100vh] flex justify-center items-center bg-[#f2f2f2] dark:bg-[#161616]">
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <main>{children}</main>
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   );
 }

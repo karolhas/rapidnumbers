@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+
+import Container from "@/components/Container";
 import GameCard from "@/app/startgame/components/gameCard";
 import { generateRandomNumbers } from "@/app/startgame/components/generateRandomNumbers";
 
@@ -62,16 +64,16 @@ const GameBoard: React.FC<GameBoardProps> = ({
   };
 
   return (
-    <div
-      className="game_board"
-      style={{
-        display: "grid",
-        gap: "3px",
-        gridTemplateColumns: calculateGridTemplateColumns(),
-      }}
-    >
-      {generateGrid()}
-    </div>
+    <Container>
+      <div
+        className="grid gap-1 justify-items-center"
+        style={{
+          gridTemplateColumns: calculateGridTemplateColumns(),
+        }}
+      >
+        {generateGrid()}
+      </div>
+    </Container>
   );
 };
 

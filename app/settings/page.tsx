@@ -1,22 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import { useTheme } from "next-themes";
+
+import { Button } from "@/components/Button";
 import VolumeSettings from "./components/volumeSettings";
 import LanguageSettings from "./components/languageSettings";
 import ThemeSettings from "./components/themeSettings";
+import Container from "@/components/Container";
 
 import PlFlag from "@/public/pl-flag.png";
 import EnFlag from "@/public/en-flag.png";
-import { Button } from "@/components/Button";
 
 const Settings: React.FC = () => {
+  const { theme: currentTheme, setTheme } = useTheme();
   const isClient = typeof window !== "undefined";
   const [areSettingsChanged, setAreSettingsChanged] = useState<boolean>(false);
 
-  const [theme, setTheme] = useState<string>(() => {
+  const [changeTheme, setChangeTheme] = useState<string | undefined>(() => {
     const storedTheme = isClient ? localStorage.getItem("theme") : null;
-    return storedTheme ? storedTheme : "light";
+    return storedTheme || "dark";
   });
   const [language, setLanguage] = useState<string>(() => {
     const storedLanguage = isClient ? localStorage.getItem("language") : null;
@@ -49,7 +53,9 @@ const Settings: React.FC = () => {
 
   const saveSettings = () => {
     if (isClient) {
-      localStorage.setItem("theme", theme);
+      if (changeTheme !== undefined) {
+        localStorage.setItem("theme", changeTheme);
+      }
       localStorage.setItem("language", language);
       localStorage.setItem("musicVolume", musicVolume.toString());
       localStorage.setItem("isMusicMuted", JSON.stringify(isMusicMuted));
@@ -61,8 +67,17 @@ const Settings: React.FC = () => {
     toast.success("Zapisano ustawienia!");
   };
 
+  useEffect(() => {
+    setChangeTheme((prevTheme) => {
+      const storedTheme = isClient ? localStorage.getItem("theme") : null;
+      return storedTheme || prevTheme;
+    });
+  }, [currentTheme, isClient]);
+
   const handleThemeChange = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    setChangeTheme(newTheme);
     setAreSettingsChanged(true);
   };
 
@@ -91,10 +106,10 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <div className="menu">
+    <Container>
+      <div className="flex flex-col gap-10">
         <Toaster position="top-center" />
-        <h1 className="text-center">USTAWIENIA</h1>
+        <h1 className="text-[28px] text-center font-medium">USTAWIENIA</h1>
         <div>
           <VolumeSettings
             title="MUZYKA"
@@ -115,7 +130,7 @@ const Settings: React.FC = () => {
           />
           <ThemeSettings
             title="MOTYW"
-            label={theme === "light" ? "JASNY" : "CIEMNY"}
+            label={currentTheme === "light" ? "CIEMNY" : "JASNY"}
             onClick={handleThemeChange}
           />
         </div>
@@ -125,18 +140,13 @@ const Settings: React.FC = () => {
             WRÓĆ
           </Button>
           {areSettingsChanged && (
-            <Button
-              variant="outline"
-              size="default"
-              className="settings_btn"
-              onClick={saveSettings}
-            >
+            <Button variant="outline" size="default" onClick={saveSettings}>
               ZAPISZ
             </Button>
           )}
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
