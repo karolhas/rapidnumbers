@@ -18,14 +18,24 @@ const GameCard: React.FC<GameCardProps> = ({
 }) => {
   const { theme } = useTheme();
 
-  const paletteColors = [
-    "#DCDCDC",
-    "#1FFFB5",
-    "#FF66FF",
-    "#FF9933",
-    "#3333FF",
-    "#E4FF2B",
+  const darkThemePaletteColors = [
+    "#058057",
+    "#9e4d9e",
+    "#a86420",
+    "#2c2cc7",
+    "#9c9e19",
   ];
+  const lightThemePaletteColors = [
+    "#1FFFB5",
+    "#f18bfc",
+    "#ffb163",
+    "#5c91fa",
+    "#ecff69",
+  ];
+
+  const paletteColors =
+    theme === "dark" ? darkThemePaletteColors : lightThemePaletteColors;
+
   const [bgColor, setBgColor] = useState<string>(
     theme === "dark" ? "#555" : "#f7f7f7"
   );
