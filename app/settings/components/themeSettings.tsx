@@ -26,7 +26,7 @@ const ThemeSettings: React.FC<ThemeSettingsProps> = ({
 
   return (
     <div className="p-4 mb-4 flex justify-between items-center rounded-xl shadow-insetShadow">
-      <h2 className="mr-12 text-xl font-medium uppercase">{title}</h2>
+      <h2 className="text-xl font-medium uppercase mr-[150px]">{title}</h2>
       <Button
         variant="default"
         size="sm"

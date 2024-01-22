@@ -24,9 +24,11 @@ const GameResult: React.FC<GameResultProps> = ({ timer, onRestart }) => {
   return (
     <Container>
       <div className="flex flex-col gap-3">
-        <p className="text-2xl text-center font-medium">GRA ZAKOŃCZONA!</p>
+        <p className="text-2xl text-center font-medium mb-4">
+          Dobra robota! Twój wynik to:
+        </p>
         <p className="text-2xl text-center">
-          Twój wynik to: <b>{formatTime(timer)}s</b>
+          Czas: <b>{formatTime(timer)}s</b>
         </p>
         <div className="flex flex-row justify-center items-center mt-10">
           <Button variant="outline" size="sm" onClick={onRestart}>

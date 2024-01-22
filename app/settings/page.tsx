@@ -5,7 +5,6 @@ import { Toaster, toast } from "react-hot-toast";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/Button";
-import VolumeSettings from "./components/volumeSettings";
 import LanguageSettings from "./components/languageSettings";
 import ThemeSettings from "./components/themeSettings";
 import Container from "@/components/Container";
@@ -26,30 +25,6 @@ const Settings: React.FC = () => {
     const storedLanguage = isClient ? localStorage.getItem("language") : null;
     return storedLanguage ? storedLanguage : "pl";
   });
-  const [musicVolume, setMusicVolume] = useState<number>(() => {
-    const storedMusicVolume = isClient
-      ? localStorage.getItem("musicVolume")
-      : null;
-    return storedMusicVolume ? parseInt(storedMusicVolume, 10) : 100;
-  });
-  const [isMusicMuted, setIsMusicMuted] = useState<boolean>(() => {
-    const storedIsMusicMuted = isClient
-      ? localStorage.getItem("isMusicMuted")
-      : null;
-    return storedIsMusicMuted ? JSON.parse(storedIsMusicMuted) : false;
-  });
-  const [soundVolume, setSoundVolume] = useState<number>(() => {
-    const storedSoundVolume = isClient
-      ? localStorage.getItem("soundVolume")
-      : null;
-    return storedSoundVolume ? parseInt(storedSoundVolume, 10) : 100;
-  });
-  const [isSoundMuted, setIsSoundMuted] = useState<boolean>(() => {
-    const storedIsSoundMuted = isClient
-      ? localStorage.getItem("isSoundMuted")
-      : null;
-    return storedIsSoundMuted ? JSON.parse(storedIsSoundMuted) : false;
-  });
 
   const saveSettings = () => {
     if (isClient) {
@@ -57,10 +32,6 @@ const Settings: React.FC = () => {
         localStorage.setItem("theme", changeTheme);
       }
       localStorage.setItem("language", language);
-      localStorage.setItem("musicVolume", musicVolume.toString());
-      localStorage.setItem("isMusicMuted", JSON.stringify(isMusicMuted));
-      localStorage.setItem("soundVolume", soundVolume.toString());
-      localStorage.setItem("isSoundMuted", JSON.stringify(isSoundMuted));
     }
     setAreSettingsChanged(false);
 
@@ -86,20 +57,6 @@ const Settings: React.FC = () => {
     setAreSettingsChanged(true);
   };
 
-  const handleMusicVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseInt(e.target.value, 10);
-    setMusicVolume(newVolume);
-    setIsMusicMuted(false);
-    setAreSettingsChanged(true);
-  };
-
-  const handleSoundVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseInt(e.target.value, 10);
-    setSoundVolume(newVolume);
-    setIsSoundMuted(false);
-    setAreSettingsChanged(true);
-  };
-
   const handleBackToMenu = (e: { preventDefault: () => any }) => {
     e.preventDefault();
     window.location.href = "/";
@@ -111,16 +68,6 @@ const Settings: React.FC = () => {
         <Toaster position="top-center" />
         <h1 className="text-[28px] text-center font-medium">USTAWIENIA</h1>
         <div>
-          <VolumeSettings
-            title="MUZYKA"
-            volume={musicVolume}
-            onVolumeChange={handleMusicVolumeChange}
-          />
-          <VolumeSettings
-            title="DŹWIĘKI"
-            volume={soundVolume}
-            onVolumeChange={handleSoundVolumeChange}
-          />
           <LanguageSettings
             title="JĘZYK"
             label={language === "pl" ? "pl" : "en"}
