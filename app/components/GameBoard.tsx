@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 //components
 import Container from "@/app/components/Container";
 import GameCard from "@/app/components/GameCard";
-import { GenerateRandomNumbers } from "@/app/utils/GenerateRandomNumbers";
 
 interface GameBoardProps {
    boardSize: number;
    clickedNumbers: number[];
    onCardClick: (number: number) => void;
    gameFinished: boolean;
+   isHardcore: boolean;
+   numbers: number[];
 }
 
 const GameBoard: React.FC<GameBoardProps> = ({
@@ -20,12 +21,14 @@ const GameBoard: React.FC<GameBoardProps> = ({
    clickedNumbers,
    onCardClick,
    gameFinished,
+   isHardcore,
+   numbers,
 }) => {
    const [shuffledNumbers, setShuffledNumbers] = useState<number[]>([]);
 
    useEffect(() => {
-      setShuffledNumbers(GenerateRandomNumbers(boardSize));
-   }, [boardSize]);
+      setShuffledNumbers(numbers);
+   }, [numbers]);
 
    const calculateCardSize = () => {
       let width = "75px";
@@ -55,7 +58,9 @@ const GameBoard: React.FC<GameBoardProps> = ({
             key={index}
             number={number}
             onClick={() => onCardClick(number)}
-            disabled={clickedNumbers.includes(number) || gameFinished}
+            disabled={
+               !isHardcore && (clickedNumbers.includes(number) || gameFinished)
+            }
             style={cardSize}
          />
       ));

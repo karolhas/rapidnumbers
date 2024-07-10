@@ -1,10 +1,13 @@
 "use client";
 
+//hooks
 import { useState } from "react";
-import BoardSizeSelector from "@/app/components/BoardSizeSelector";
-import DifficultySelector from "@/app/components/DifficultySelector";
+
+//components
 import { Button } from "@/app/components/Button";
 import Container from "@/app/components/Container";
+import BoardSizeSelector from "@/app/components/BoardSizeSelector";
+import DifficultySelector from "@/app/components/DifficultySelector";
 
 export default function GameMode() {
    const [selectedBoardSize, setSelectedBoardSize] = useState<number | null>(
