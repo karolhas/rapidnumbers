@@ -23,13 +23,14 @@
 -  <strong>Themes:</strong> change the theme of the game between light and dark.
 -  <strong>Different board sizes:</strong> you can choose between 5x5, 7x7 or 10x10 board size.
 -  <strong>Restart button:</strong> now you can use restart button during the game.
+-  <strong>Difficulty level:</strong> add a hardcore level.
 
 ## 4️⃣ Future Enhancements
 
 -  <strong>User Authentication:</strong> implement a login system for users.
 -  <strong>Ranking:</strong> add a leaderboard for the best scores.
 -  <strong>Translation:</strong> change the language of the interface between English and Polish.
--  <strong>Difficulty level:</strong> add a hardcore level.
+
 
 ## 5️⃣ How to install
 
